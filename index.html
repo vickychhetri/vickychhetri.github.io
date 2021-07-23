@@ -1,172 +1,466 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/p5@1.4.0/lib/p5.js"></script>
-    <title>vickychhetri.github.io</title>
-  </head>
-  <body>
- 
+    <!-- Basic Page Needs
+    ================================================== -->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
+    <title> Best Web Developer in Jalandhar ~ Vicky Chhetri</title>
 
-<script>
-  let systems;
+    <meta name="description" content=" Best Web Developer in Jalandhar ~ Vicky Chhetri">
+    <meta name="author" content="vicky chhetri">
+    <meta name="keywords" content="vicky chhetri, web developer, jalandhar">
 
-function setup() {
-  createCanvas(windowWidth, windowHeight);
+    <!-- Mobile Specific Metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
 
-  textSize(width / 3);
-  textAlign(CENTER, CENTER);
-  systems = [];
-}
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
 
-function draw() {
-  background(51);
-  background(0);
-  for (i = 0; i < systems.length; i++) {
-    systems[i].run();
-    systems[i].addParticle();
-  }
-  if (systems.length == 0) {
- 
-    // text("click mouse to add particle systems", width / 2, 0);
- 
-  }
-     fill(255);
-    textAlign(CENTER);
-    textSize(32);
-    text('“vickychhetri.github.io ”', width / 2, (windowHeight / 2)-(windowHeight / 3));
-     text('“The true ENTREPRENEUR is a risk taker, not an excuse maker.”', width / 2, windowHeight / 2);
-   
+    <!-- Favicon
+    ================================================== -->
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon.png">
 
-}
+    <!-- Stylesheets
+    ================================================== -->
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
 
-function mousePressed() {
-  this.p = new ParticleSystem(createVector(mouseX, mouseY));
-  systems.push(p);
-}
+    <!-- Custom styles for this template -->
+    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="assets/css/responsive.css" rel="stylesheet">
 
-// A simple Particle class
-let Particle = function(position) {
-  this.acceleration = createVector(0, 0.05);
-  this.velocity = createVector(random(-1, 1), random(-1, 0));
-  this.position = position.copy();
-  this.lifespan = 255.0;
-};
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
 
-Particle.prototype.run = function() {
-  this.update();
-  this.display();
-};
+</head>
+<body>
 
-// Method to update position
-Particle.prototype.update = function(){
-  this.velocity.add(this.acceleration);
-  this.position.add(this.velocity);
-  this.lifespan -= 2;
-};
+    <header id="masthead" class="site-header" data-anchor-target=".hero" data-top="background: rgba(255,255,255,0); padding: 30px 0; box-shadow: 0px 0px 20px 6px rgba(0, 0, 0, 0);" data-top-bottom="background: rgba(255,255,255,1); padding: 10px 0; box-shadow: 0px 0px 20px 6px rgba(0, 0, 0, 0.2);">
+        <nav id="primary-navigation" class="site-navigation">
+            <div class="container">
+                <div class="navbar-header page-scroll">
 
-// Method to display
-Particle.prototype.display = function () {
-  stroke(200, this.lifespan);
-  strokeWeight(2);
-  fill(127, this.lifespan);
-  ellipse(this.position.x, this.position.y, 12, 12);
-};
+                    <button type="button" class="navbar-toggle collapsed" data-target="#portfolio-perfect-collapse" aria-expanded="false" >
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    
+                    <a href="#hero" class="site-logo">
+                        <img src="assets/img/logo.png" alt="logo">
+                    </a>
 
-// Is the particle still useful?
-Particle.prototype.isDead = function () {
-  if (this.lifespan < 0) {
-    return true;
-  } else {
-    return false;
-  }
-};
+                </div><!-- /.navbar-header -->
 
-let ParticleSystem = function (position) {
-  this.origin = position.copy();
-  this.particles = [];
-};
+                <div class="main-menu" id="portfolio-perfect-collapse">
 
-ParticleSystem.prototype.addParticle = function () {
-  // Add either a Particle or CrazyParticle to the system
-  if (int(random(0, 2)) == 0) {
-    p = new Particle(this.origin);
-  }
-  else {
-    p = new CrazyParticle(this.origin);
-  }
-  this.particles.push(p);
-};
+                    <ul class="nav navbar-nav navbar-right">
 
-ParticleSystem.prototype.run = function () {
-  for (let i = this.particles.length - 1; i >= 0; i--) {
-    let p = this.particles[i];
-    p.run();
-    if (p.isDead()) {
-      this.particles.splice(i, 1);
-    }
-  }
-};
+                        <li class="page-scroll"><a href="#hero">Home</a></li>
+                        <li class="page-scroll"><a href="#about">About</a></li>
+                        <li class="page-scroll"><a href="#service">Service</a></li>
+                        <li class="page-scroll"><a href="#portfolio">Portfolio</a></li>
+                        <li class="page-scroll"><a href="#contact">Contact</a></li>
+                        
+                    </ul><!-- /.navbar-nav -->
 
-// A subclass of Particle
+                </div><!-- /.navbar-collapse -->
 
-function CrazyParticle(origin) {
-  // Call the parent constructor, making sure (using Function#call)
-  // that "this" is set correctly during the call
-  Particle.call(this, origin);
+            </div>
+        </nav><!-- /.primary-navigation -->
+    </header><!-- /#header -->
 
-  // Initialize our added properties
-  this.theta = 0.0;
-};
+    <div id="hero" class="hero">
+        <div class="container">
+            <div class="row">
+              
+                <div class="col-md-6 ">
+                    <h1> Vicky Chhetri</h1>
+                    <div class="page-scroll">
+                        <p class="job-title">Full Stack Developer</p>
+                        <a href="#contact" class="btn btn-fill ">Hire me</a>
+                        <div class="clearfix visible-xxs"></div>
+                        <a href="#portfolio" class="btn btn-border">Explore more</a>
+                    </div>
+                </div>
+            
+                <div class="col-md-6 ">
+                    <img src="assets/img/vicky.png" alt="alex-vidal">
+                </div>
 
-// Create a Crazy.prototype object that inherits from Particle.prototype.
-// Note: A common error here is to use "new Particle()" to create the
-// Crazy.prototype. That's incorrect for several reasons, not least
-// that we don't have anything to give Particle for the "origin"
-// argument. The correct place to call Particle is above, where we call
-// it from Crazy.
-CrazyParticle.prototype = Object.create(Particle.prototype); // See note below
+            </div>
+        </div>
+    </div><!-- /.hero -->
 
-// Set the "constructor" property to refer to CrazyParticle
-CrazyParticle.prototype.constructor = CrazyParticle;
+    <main id="main" class="site-main">
 
-// Notice we don't have the method run() here; it is inherited from Particle
+        <section id="about" class="site-section section-about text-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-3">
+                        <h2>About</h2>
+                        <img src="assets/img/lines.svg" class="img-lines" alt="lines">
+                        <p>Hello! I'm Vicky Chhetri, a full stuck developer, a development enthusiast, and a 
+                            guy slighty obsessed for code quality. Also I'm a co-founder
+                             of vikedihost.com. I’m currently available for freelance work.
+                              If you have a project that you want to get started or think
+                               you need my help with something, then get in touch.
+                            
+                            </p>
+                        <a href="https://www.linkedin.com/in/vicky-chhetri-970983192/" class="btn btn-fill" target="_blank" >Linkedin</a>
+                        <a href="https://www.facebook.com/vicky.chhetri.77" class="btn btn-fill" target="_blank" >Facebook</a>
+                    </div>
+                </div>
+            </div>
+        </section><!-- /.secton-about -->
 
-// This update() method overrides the parent class update() method
-CrazyParticle.prototype.update=function() {
-  Particle.prototype.update.call(this);
-  // Increment rotation based on horizontal velocity
-  this.theta += (this.velocity.x * this.velocity.mag()) / 10.0;
-}
+        <section class="site-section section-skills">
+            <div class="container">
+                <div class="text-center">
+                    <h3>My Skills</h3>
+                    <img src="assets/img/lines.svg" class="img-lines" alt="lines">
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="skill">
+                            <h4>Html/css</h4>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" data-transitiongoal="100"></div><!-- /.progress-bar -->
+                            </div><!-- /.progress -->
+                        </div><!-- /.skill -->
+                        <div class="skill">
+                            <h4>Python</h4>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" data-transitiongoal="75"></div><!-- /.progress-bar -->
+                            </div><!-- /.progress -->
+                        </div><!-- /.skill -->
+                    </div>
+                    <div class="col-md-4">
+                        <div class="skill">
+                            <h4>Javascript</h4>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" data-transitiongoal="82"></div><!-- /.progress-bar -->
+                            </div><!-- /.progress -->
+                        </div><!-- /.skill -->
+                        <div class="skill">
+                            <h4>Asp.Net</h4>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" data-transitiongoal="66"></div><!-- /.progress-bar -->
+                            </div><!-- /.progress -->
+                        </div><!-- /.skill -->
+                    </div>
+                    <div class="col-md-4">
+                        <div class="skill">
+                            <h4>Php</h4>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" data-transitiongoal="97"></div><!-- /.progress-bar -->
+                            </div><!-- /.progress -->
+                        </div><!-- /.skill -->
+                        <div class="skill">
+                            <h4>Java</h4>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" data-transitiongoal="45"></div><!-- /.progress-bar -->
+                            </div><!-- /.progress -->
+                        </div><!-- /.skill -->
+                    </div>
+                </div>
+            </div>
+        </section><!-- /.secton-skills -->
 
-// This display() method overrides the parent class display() method
-CrazyParticle.prototype.display=function() {
-  // Render the ellipse just like in a regular particle
-  Particle.prototype.display.call(this);
-  // Then add a rotating line
-  push();
-  translate(this.position.x, this.position.y);
-  rotate(this.theta);
-  stroke(255, this.lifespan);
-  line(0, 0, 25, 0);
-  pop();
-}
+        <section id="service" class="site-section section-services overlay text-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3>What i do</h3>
+                        <img src="assets/img/lines.svg" class="img-lines" alt="lines">
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="service">
+                            <img src="assets/img/front-end.svg" alt="Front End Developer">
+                            <h4>Front-end</h4>
+                            <p>As a javascript developer, I have experience in HTML5 and CSS3 techniques working with jQuery or more advanced javascript MVC frameworks such as react</p>
+                        </div><!-- /.service -->
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="service">
+                            <img src="assets/img/back-end.svg" alt="Back End Developer">
+                            <h4>Back-end</h4>
+                            <p>Utilising php frameworks such as laravel or creating node code, I've written services supporting thousands of users, including college websites, university  and more.</p>
+                        </div><!-- /.service -->
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="service">
+                            <img src="assets/img/consultancy.svg" alt="Coding">
+                            <h4>Consultancy</h4>
+                            <p>As well as providing development services, I can also help you decide strategic roadmaps via consultancy services.</p>
+                        </div><!-- /.service -->
+                    </div>
+                </div>
+            </div>
+        </section><!-- /.secton-services -->
 
-  </script>
+        <section id="portfolio" class="site-section section-portfolio">
+            <div class="container">
+                <div class="text-center">
+                    <h3>  some recent Works</h3>
+                    <p> I have completed more than 18 projects, research paper assignments in last year. Also work with IDBI Bank, Shopper Stop as a Desktop Engineer.
+                         All kinds of web development support like Domain, Hosting, Emails, Managing VPS, Handling Linux server, Handling Cpanel, Plesk Control panel. <br/>
+                        G-Busienss Support, Google tools, SEO , Google Analytics, Google forms and certificate generate, IT support in events. </p>
+                    <img src="assets/img/lines.svg" class="img-lines" alt="lines">
+                </div>
+                <div class="row">
+                    <div class="col-md-4 col-xs-6">
+                        <div class="portfolio-item">
+                            <img src="assets/img/pf1.png" class="img-res" alt="">
+                            <div class="portfolio-item-info">
+                                <h4> Funds Upgrade</h4>
+                                <a href="#" data-toggle="modal" data-target="#portfolioItem1"><span class="glyphicon glyphicon-eye-open"></span></a>
+                                <a href="https://www.fundsupgrade.com/"><span class="glyphicon glyphicon-link"></span></a>
+                            </div><!-- /.portfolio-item-info -->
+                        </div><!-- /.portfolio-item -->
+                    </div>
+                    <div class="col-md-4 col-xs-6">
+                        <div class="portfolio-item">
+                            <img src="assets/img/pf2.png" class="img-res" alt="">
+                            <div class="portfolio-item-info">
+                                <h4> Blessed Kanwar</h4>
+                                <a href="#" data-toggle="modal" data-target="#portfolioItem2"><span class="glyphicon glyphicon-eye-open"></span></a>
+                                <a href="https://blessedkanwar.com/"><span class="glyphicon glyphicon-link"></span></a>
+                            </div><!-- /.portfolio-item-info -->
+                        </div><!-- /.portfolio-item -->
+                    </div>
+                    <div class="col-md-4 col-xs-6">
+                        <div class="portfolio-item">
+                            <img src="assets/img/pf3.png" class="img-res" alt="">
+                            <div class="portfolio-item-info">
+                                <h4> Mahira Gate</h4>
+                                <a href="#" data-toggle="modal" data-target="#portfolioItem3"><span class="glyphicon glyphicon-eye-open"></span></a>
+                                <a href="https://mahiragate.com/"><span class="glyphicon glyphicon-link"></span></a>
+                            </div><!-- /.portfolio-item-info -->
+                        </div><!-- /.portfolio-item -->
+                    </div>
+                    <div class="col-md-4 col-xs-6">
+                        <div class="portfolio-item">
+                            <img src="assets/img/pf4.png" class="img-res" alt="">
+                            <div class="portfolio-item-info">
+                                <h4> News Mahiragate</h4>
+                                <a href="#" data-toggle="modal" data-target="#portfolioItem4"><span class="glyphicon glyphicon-eye-open"></span></a>
+                                <a href="https://blog.mahiragate.com/"><span class="glyphicon glyphicon-link"></span></a>
+                            </div><!-- /.portfolio-item-info -->
+                        </div><!-- /.portfolio-item -->
+                    </div>
+                    <div class="col-md-4 col-xs-6">
+                        <div class="portfolio-item">
+                            <img src="assets/img/pf5.png" class="img-res" alt="">
+                            <div class="portfolio-item-info">
+                                <h4> Baystar West </h4>
+                                <a href="#" data-toggle="modal" data-target="#portfolioItem5"><span class="glyphicon glyphicon-eye-open"></span></a>
+                                <a href="http://www.baystarwest.com/"><span class="glyphicon glyphicon-link"></span></a>
+                            </div><!-- /.portfolio-item-info -->
+                        </div><!-- /.portfolio-item -->
+                    </div>
+                    <div class="col-md-4 col-xs-6">
+                        <div class="portfolio-item">
+                            <img src="assets/img/pf6.png" class="img-res" alt="">
+                            <div class="portfolio-item-info">
+                                <h4> CT World School </h4>
+                                <a href="#" data-toggle="modal" data-target="#portfolioItem6"><span class="glyphicon glyphicon-eye-open"></span></a>
+                                <a href="https://ctworld.in/"><span class="glyphicon glyphicon-link"></span></a>
+                            </div><!-- /.portfolio-item-info -->
+                        </div><!-- /.portfolio-item -->
+                    </div>
+                </div>
+            </div>
+        </section><!-- /.secton-portfolio -->
 
-    
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        <section class="site-section section-counters text-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-4 col-xs-12">
+                        <p class="counter start" data-to="2" data-speed="2000">0</p>
+                        <h4>Years Experience</h4>
+                    </div>
+                    <div class="col-sm-4 col-xs-12">
+                        <p class="counter start" data-to="18" data-speed="2000">0</p>       
+                        <h4>Projects Delivered</h4>      
+                    </div>
+                    <div class="col-sm-4 col-xs-12">
+                        <p id="infinity" class="counter" data-from="0" data-to="1" data-speed="1000">0</p>
+                        <h4>Contact Now and Discuss yours Idea !<br>What are you waiting for?</h4>
+                    </div>
+                </div>
+            </div>
+        </section><!-- /.section-counters -->
 
-    <!-- Option 2: Separate Popper and Bootstrap JS -->
-    <!--
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
-    -->
-  </body>
+        <section id="contact" class="site-section section-form text-center">
+            <div class="container">
+
+                <h3>Contact</h3>
+                <p> vickychhetri4@gmail.com</p>
+                <img src="assets/img/lines.svg" class="img-lines" alt="lines">
+                <form>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <input type="text" name="name"  value="Mobile Number - +91 - 9780553734" class="form-control mt-x-0"  readonly>
+                        </div>
+                        <div class="col-sm-6">
+                            <input type="text" name="email" value="Whataspp Number - +91 - 9780553734" class="form-control"  readonly>   
+                        </div>
+                       
+                    </div>
+                    <button href="#" class="btn btn-border" type="submit">Call Me <span class="glyphicon glyphicon-send"></span></button>
+                </form>
+            </div>
+        </section><!-- /.section-form -->
+
+    </main><!-- /#main -->
+
+    <!-- Modals -->
+    <div id="portfolioItem1" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <a class="close" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span></a>
+            <img class="img-res" src="assets/img/pf1.png" alt="">
+          </div>
+          <div class="modal-body">
+            <h4 class="modal-title">Funds Upgrade </h4>
+            <p> . ICICI Prudential Focused Bluechip Equity Fund, 2. Aditya Birla Sun Life Small & Midcap Fund, 3. Tata Equity PE Fund, 4. HDFC Monthly Income Plan – MTP, 5. L&T Tax Advantage Fund, 6. SBI Nifty Index Fund,
+                 7. Kotak Corporate Bond Fund, 8. Canara Robeco Gilt PGS, 9. DSP BlackRock Balanced Fund, 10. Axis Liquid Fund</p>
+          </div>
+          <div class="modal-footer">
+            <a href="https://www.fundsupgrade.com/" class="btn btn-fill">Visit Now</a>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+    <div id="portfolioItem2" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <a class="close" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span></a>
+            <img class="img-res" src="assets/img/pf2.png" alt="">
+          </div>
+          <div class="modal-body">
+            <h4 class="modal-title"> Blessed Kanwar</h4>
+            <p>
+                He is a passionate speaker who loves to interact with youth; an anchor of the talk show by the name The Kanwar's Talk Show on a YouTube Channel; and a motivator who tries
+                 to spread positivity and smiles around. He loves being called as "the blessed child of Waheguru".
+                
+                </p>
+          </div>
+          <div class="modal-footer">
+            <a href="https://blessedkanwar.com/" class="btn btn-fill">Visit Now</a>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+    <div id="portfolioItem3" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <a class="close" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span></a>
+            <img class="img-res" src="assets/img/pf3.png" alt="">
+          </div>
+          <div class="modal-body">
+            <h4 class="modal-title"> Mahira Gate</h4>
+            <p> MahiraGate.com offers you many of titles across categories such as School Subjects,
+                 Colleges, Academics, Children’s Books, Business & Economics, Indian Writing and Literature & Fiction.
+            </p>
+          </div>
+          <div class="modal-footer">
+            <a href="https://mahiragate.com/" class="btn btn-fill">Visit Now</a>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+    <div id="portfolioItem4" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <a class="close" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span></a>
+            <img class="img-res" src="assets/img/pf4.png" alt="">
+          </div>
+          <div class="modal-body">
+            <h4 class="modal-title"> News Mahira Gate</h4>
+            <p>
+                User experience (UX) design is the process design teams use to create products that provide meaningful and relevant experiences to users. This involves the design of the entire process of
+                 acquiring and integrating the product, including aspects of branding, design, usability and function.
+            
+            </p>
+          </div>
+          <div class="modal-footer">
+            <a href="https://blog.mahiragate.com/" class="btn btn-fill">Visit Now</a>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+    <div id="portfolioItem5" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <a class="close" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span></a>
+            <img class="img-res" src="assets/img/pf5.png" alt="">
+          </div>
+          <div class="modal-body">
+            <h4 class="modal-title">  Baystar West</h4>
+            <p>
+                Baystar West has a very talented team of management with experience in logistics of NEMT and have impeccable record of a safety and on time performance (OTP). One of the company's co-founder has over 25 years of experience in NEMT. Baystar west has developed a plan to provide safe 
+                and dependable transportation services that would be affordable to seniors and people with disabilities. 
+                
+                </p>
+          </div>
+          <div class="modal-footer">
+            <a href="http://www.baystarwest.com/" class="btn btn-fill">Visit Now</a>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+    <div id="portfolioItem6" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <a class="close" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span></a>
+            <img class="img-res" src="assets/img/pf6.png" alt="">
+          </div>
+          <div class="modal-body">
+            <h4 class="modal-title"> CT World School</h4>
+            <p> 
+                Spread over a verdant, picturesque and hi-tech campus of 4.5 acres in an unpolluted, inspiring and happy environment
+                 the school offers the best in terms of world class facilities required to enhance learning outcomes.
+            </p>
+          </div>
+          <div class="modal-footer">
+            <a href="#" class="btn btn-fill">Visit Now</a>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+    <script src="assets/js/skrollr.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-progressbar/0.9.0/bootstrap-progressbar.min.js"></script>
+    <script src="assets/js/jquery.countTo.min.js"></script>
+    <script src="assets/js/script.js"></script>
+  
+</body>
 </html>
