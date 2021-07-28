@@ -24,6 +24,12 @@ let track_list = [
   {
     name: "Woh Lamhe Re",
     artist: "Atif Aslam",
+    image: "image/veerzara.jpg",
+    path: "songs/veerzara.mp3"
+  },
+   {
+    name: "Veer Zaara Tone",
+    artist: "Veer Zaara",
     image: "image/zehar.jpg",
     path: "songs/Woh-Lamhe-Re.mp3"
   },
