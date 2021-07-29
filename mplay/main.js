@@ -33,6 +33,12 @@ let track_list = [
     image: "image/zehar.jpg",
     path: "songs/Woh-Lamhe-Re.mp3"
   },
+  {
+    name: "Beet Janiya",
+    artist: "Sartaj",
+    image: "image/BeetJaniyavicky.jpg",
+    path: "songs/BeetJaniyavicky.mp3"
+  },
 ];
 
 function random_bg_color() {
