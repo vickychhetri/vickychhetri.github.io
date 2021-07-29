@@ -36,7 +36,7 @@ let track_list = [
   {
     name: "Beet Janiya",
     artist: "Sartaj",
-    image: "image/BeetJaniyavicky.jpg",
+    image: "image/BeetJaniyavicky.jpeg",
     path: "songs/BeetJaniyavicky.mp3"
   },
 ];
